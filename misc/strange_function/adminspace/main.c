@@ -9,7 +9,7 @@ int main(){
     scanf("%d %d %d %d %d %d %d %d" , &a , &b , &c ,&d,&e,&f,&g,&h);
 
     if(sum(a,b,c,d,e,f,g,h) == 1337){
-        printf("[FLAG] %s" , "pudge{sum_funct1ons_1s_strang3}");
+        printf("[FLAG] %s" , "mipt{sum_funct1ons_1s_strang3}");
     }else{
         printf("%s", "NOPE ^-^");
     }

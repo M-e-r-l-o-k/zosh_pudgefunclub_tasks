@@ -8,14 +8,12 @@
 #define PORT 45600
 #define BUFFER_SIZE 4096
 
-// Структура пользователя
 typedef struct {
-    char username[32]; // Уязвимость: небольшой буфер для username
-    char password[32]; // Уязвимость: небольшой буфер для password
-    int is_admin;      // Флаг администратора
+    char username[32]; 
+    char password[32]; 
+    int is_admin;     
 } User;
 
-// Функция чтения файла
 char *read_file(const char *filepath) {
     FILE *file = fopen(filepath, "r");
     if (!file) {
@@ -45,7 +43,6 @@ char *read_file(const char *filepath) {
     return content;
 }
 
-// Функция обработки клиента
 void handle_client(int client_socket) {
     char buffer[BUFFER_SIZE];
     int bytes_received = recv(client_socket, buffer, BUFFER_SIZE - 1, 0);
@@ -82,19 +79,13 @@ void handle_client(int client_socket) {
     } else if (strncmp(buffer, "POST /", 6) == 0) {
         char *body = strstr(buffer, "\r\n\r\n");
         if (body) {
-            body += 4;  // Пропускаем \r\n\r\n
+            body += 4; 
             printf("Тело POST-запроса:\n%s\n", body);
 
-            User user = {0}; // Инициализируем структуру пользователя
-            user.is_admin = 0; // По умолчанию не админ
+            User user = {0}; 
+            user.is_admin = 0;
 
-            // Уязвимость
             sscanf(body, "username=%s&password=%s", user.username, user.password);
-
-            // чекалка
-            printf("Имя пользователя: %s\n", user.username);
-            printf("Пароль: %s\n", user.password);
-            printf("is_admin: %d\n", user.is_admin);
 
             char response_body[BUFFER_SIZE];
             if (user.is_admin == 1) {
@@ -120,9 +111,10 @@ void handle_client(int client_socket) {
                          "<body>"
                          "<h1>Welcome, Admin!</h1>"
                          "<p>You have administrative privileges.</p>"
-                         "<p>FLAG: pudge{h0w_oth3n_d0_y0u_pwn_s1t3s?}</p>"
+                         "<p>FLAG: mipt{h0w_oth3n_d0_y0u_pwn_s1t3s?}</p>"
                          "</body>"
                          "</html>");
+
             } else {
                 snprintf(response_body, sizeof(response_body),
                          "<!DOCTYPE html>"

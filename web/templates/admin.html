@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/style3.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Admin Panel</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="content">Create a Post:</label>
+                <textarea id="content" name="content" rows="5" placeholder="Write your post here..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="post-preview">
+            <h2>Post Preview:</h2>
+            <p>{{ content }}</p> 
+        </div>
+    </div>
+</body>
+</html>

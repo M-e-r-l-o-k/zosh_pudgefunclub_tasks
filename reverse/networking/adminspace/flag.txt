@@ -1,1 +1,1 @@
-FLAG: pudge{h0w_oth3n_d0_y0u_pwn_s1t3s?}
+FLAG: mipt{h0w_oth3n_d0_y0u_pwn_s1t3s?}
